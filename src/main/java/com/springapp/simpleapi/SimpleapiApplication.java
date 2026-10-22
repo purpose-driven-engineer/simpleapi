@@ -1,4 +1,4 @@
-package com.eample.simpleapi;
+package com.springapp.simpleapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

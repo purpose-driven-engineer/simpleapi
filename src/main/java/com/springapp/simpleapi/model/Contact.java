@@ -1,4 +1,4 @@
-package com.eample.simpleapi.model;
+package com.springapp.simpleapi.model;
 
 public class Contact {
 
