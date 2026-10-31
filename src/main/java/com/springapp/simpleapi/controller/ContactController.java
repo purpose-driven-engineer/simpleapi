@@ -5,9 +5,7 @@ import com.springapp.simpleapi.model.Contact;
 import com.springapp.simpleapi.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,22 @@ public class ContactController {
     @GetMapping
     public ResponseEntity<ApiResponse<List<Contact>>> getAllContacts(){
         return ResponseEntity.ok(contactService.getAllContacts());
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<ApiResponse<Contact>> createContact(@RequestBody Contact contact){
+        return ResponseEntity.ok(contactService.addContact(contact));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ApiResponse<?>> deleteContact(@PathVariable int id){
+        return ResponseEntity.ok(contactService.deleteContact(id));
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<ApiResponse<Contact>> updateContact(@PathVariable int id, @RequestBody Contact contactData){
+        ApiResponse<Contact> response = contactService.updateContact(id, contactData);
+
+        return ResponseEntity.ok(response);
     }
 }
